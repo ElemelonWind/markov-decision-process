@@ -119,15 +119,15 @@ def main():
     for i in range(dim):
         for j in range(dim):
             if policies[i][j] == 'T':
-                ax.text(j, i, "{:.3f}".format(mdp[i][j]), ha="center", va="center", color="black")
+                ax.text(j, dim-i-1, "{:.3f}".format(mdp[i][j]), ha="center", va="center", color="black")
             elif policies[i][j] == 'U':
-                ax.arrow(j, i, 0, -0.4, head_width=0.1, head_length=0.1, fc='k', ec='k')
+                ax.arrow(j, dim-i-1, 0, 0.4, head_width=0.1, head_length=0.1, fc='k', ec='k')
             elif policies[i][j] == 'D':
-                ax.arrow(j, i, 0, 0.4, head_width=0.1, head_length=0.1, fc='k', ec='k')
+                ax.arrow(j, dim-i-1, 0, -0.4, head_width=0.1, head_length=0.1, fc='k', ec='k')
             elif policies[i][j] == 'L':
-                ax.arrow(j, i, -0.4, 0, head_width=0.1, head_length=0.1, fc='k', ec='k')
+                ax.arrow(j, dim-i-1, -0.4, 0, head_width=0.1, head_length=0.1, fc='k', ec='k')
             else:
-                ax.arrow(j, i, 0.4, 0, head_width=0.1, head_length=0.1, fc='k', ec='k')
+                ax.arrow(j, dim-i-1, 0.4, 0, head_width=0.1, head_length=0.1, fc='k', ec='k')
     plt.show()
 
 if __name__ == '__main__':

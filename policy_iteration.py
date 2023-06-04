@@ -137,7 +137,7 @@ def main():
     for i in range(dim):
         for j in range(dim):
             if policy[i][j] == 'T':
-                ax.text(j, i, "{:.3f}".format(mdp[i][j]), ha="center", va="center", color="black")
+                ax.text(j, dim-i-1, "{:.3f}".format(mdp[i][j]), ha="center", va="center", color="black")
             else:
                 directions = direction_calculations(dim, reward, gamma, mdp, i, j)
                 up = noise[0] * directions[0] + noise[1] * directions[1] + noise[2] * directions[2] + noise[3] * directions[3]
@@ -145,20 +145,20 @@ def main():
                 left = noise[0] * directions[2] + noise[1] * directions[0] + noise[2] * directions[1] + noise[3] * directions[3]
                 right = noise[0] * directions[3] + noise[1] * directions[0] + noise[2] * directions[1] + noise[3] * directions[2]
 
-                ax.text(j, i-0.25, "{:.2f}".format(up), ha="center", va="top", color="black", fontsize=6)
-                ax.text(j, i+0.25, "{:.2f}".format(down), ha="center", va="bottom", color="black", fontsize=6)
-                ax.text(j-0.1, i, "{:.2f}".format(left), ha="right", va="center", color="black", fontsize=6)
-                ax.text(j+0.1, i, "{:.2f}".format(right), ha="left", va="center", color="black", fontsize=6)
+                ax.text(j, dim-i-1+0.4, "{:.2f}".format(up), ha="center", va="top", color="black", fontsize=6)
+                ax.text(j, dim-i-1-0.4, "{:.2f}".format(down), ha="center", va="bottom", color="black", fontsize=6)
+                ax.text(j-0.1, dim-i-1, "{:.2f}".format(left), ha="right", va="center", color="black", fontsize=6)
+                ax.text(j+0.1, dim-i-1, "{:.2f}".format(right), ha="left", va="center", color="black", fontsize=6)
 
                 # highlight the action with the highest value
                 if policy[i][j] == 'U':
-                    ax.text(j, i-0.25, "{:.2f}".format(up), ha="center", va="top", color="green", fontsize=6)
+                    ax.text(j, dim-i-1+0.4, "{:.2f}".format(up), ha="center", va="top", color="green", fontsize=6)
                 elif policy[i][j] == 'D':
-                    ax.text(j, i+0.25, "{:.2f}".format(down), ha="center", va="bottom", color="green", fontsize=6)
+                    ax.text(j, dim-i-1-0.4, "{:.2f}".format(down), ha="center", va="bottom", color="green", fontsize=6)
                 elif policy[i][j] == 'L':
-                    ax.text(j-0.1, i, "{:.2f}".format(left), ha="right", va="center", color="green", fontsize=6)
+                    ax.text(j-0.1, dim-i-1, "{:.2f}".format(left), ha="right", va="center", color="green", fontsize=6)
                 else:
-                    ax.text(j+0.1, i, "{:.2f}".format(right), ha="left", va="center", color="green", fontsize=6)
+                    ax.text(j+0.1, dim-i-1, "{:.2f}".format(right), ha="left", va="center", color="green", fontsize=6)
 
     plt.show()
 
